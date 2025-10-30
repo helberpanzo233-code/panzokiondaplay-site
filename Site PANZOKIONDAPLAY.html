@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panzo KiondaPlay</title>
+    <style>
+        :root {
+            --purple-dark: #2d1b69;
+            --purple-medium: #5e35b1;
+            --purple-light: #8e24aa;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--purple-dark), var(--purple-medium), var(--purple-light));
+            color: var(--text-light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+        }
+        
+        .logo-image {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+            min-width: 300px;
+        }
+        
+        .hero-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: var(--purple-dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #ffdb4d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .devices {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            min-width: 300px;
+        }
+        
+        .device {
+            width: 150px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .device:hover {
+            transform: translateY(-10px);
+        }
+        
+        .device-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .device-logo-image {
+            height: 30px;
+            width: auto;
+            max-width: 100%;
+        }
+        
+        .plans {
+            padding: 80px 0;
+        }
+        
+        .plans h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .plans-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .plan {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            min-width: 280px;
+        }
+        
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .plan-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact {
+            padding: 80px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #ffcc00;
+            min-width: 30px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+        }
+        
+        /* Media Queries para Responsividade */
+        
+        /* Tablets */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .plans-container {
+                justify-content: center;
+            }
+            
+            .plan {
+                flex: 0 1 calc(50% - 30px);
+            }
+        }
+        
+        /* Tablets Pequenos e Celulares Grandes */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 15px 10px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .devices {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .device {
+                width: 130px;
+                height: 180px;
+            }
+            
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .plan {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Celulares Pequenos */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .plans h2, .contact h2 {
+                font-size: 28px;
+            }
+            
+            .device {
+                width: 110px;
+                height: 160px;
+            }
+            
+            .device-icon {
+                font-size: 40px;
+            }
+            
+            .device-logo-image {
+                height: 25px;
+            }
+            
+            .plan {
+                padding: 30px 20px;
+            }
+            
+            .plan-price {
+                font-size: 30px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+            
+            .logo-image {
+                height: 50px;
+            }
+        }
+        
+        /* Celulares Muito Pequenos */
+        @media (max-width: 360px) {
+            .hero-content h1 {
+                font-size: 24px;
+            }
+            
+            .devices {
+                gap: 10px;
+            }
+            
+            .device {
+                width: 100px;
+                height: 140px;
+            }
+            
+            .device-icon {
+                font-size: 35px;
+            }
+            
+            .device-logo-image {
+                height: 20px;
+            }
+            
+            .plan {
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <!-- AQUI VAI O LOGOTIPO PRINCIPAL -->
+                <img src="https://ibb.co/b5WfDZyh" alt="Panzo KiondaPlay" class="logo-image">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#plans">Planos</a></li>
+                    <li><a href="#contact">Contacto/Suporte</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Entretenimento de Qualidade para Todos os Seus Dispositivos</h1>
+                <p>Desfrute do melhor conteúdo em qualquer lugar, a qualquer hora. Com a Panzo KiondaPlay, o entretenimento está sempre ao seu alcance.</p>
+                <a href="#plans" class="btn">Ver Planos</a>
+            </div>
+            <div class="devices">
+                <div class="device">
+                    <div class="device-icon">📱</div>
+                    <!-- LOGOTIPO NO CELULAR -->
+                    <img src="https://ibb.co/b5WfDZyh" alt="Panzo KiondaPlay" class="device-logo-image">
+                </div>
+                <div class="device">
+                    <div class="device-icon">💻</div>
+                    <!-- LOGOTIPO NO COMPUTADOR -->
+                    <img src="https://ibb.co/b5WfDZyh" alt="Panzo KiondaPlay" class="device-logo-image">
+                </div>
+                <div class="device">
+                    <div class="device-icon">📺</div>
+                    <!-- LOGOTIPO NA TV -->
+                    <img src="https://ibb.co/b5WfDZyh" alt="Panzo KiondaPlay" class="device-logo-image">
+                </div>
+            </div>
+        </section>
+        
+        <section class="plans" id="plans">
+            <h2>Nossos Planos</h2>
+            <div class="plans-container">
+                <div class="plan">
+                    <h3>Básico</h3>
+                    <div class="plan-price">7.500kzs</div>
+                    <ul class="plan-features">
+                        <li>Acesso a conteúdo básico</li>
+                        <li>Qualidade SD</li>
+                        <li>1 dispositivo simultâneo</li>
+                        <li>Suporte por email</li>
+                    </ul>
+                    <a href="https://wa.me/244954158404" class="btn">Assinar Agora</a>
+                </div>
+                <div class="plan">
+                    <h3>Padrão</h3>
+                    <div class="plan-price">10.000kzs</div>
+                    <ul class="plan-features">
+                        <li>Acesso a todo conteúdo</li>
+                        <li>Qualidade HD</li>
+                        <li>2 dispositivos simultâneos</li>
+                        <li>Suporte prioritário</li>
+                    </ul>
+                    <a href="https://wa.me/244954158404" class="btn">Assinar Agora</a>
+                </div>
+                <div class="plan">
+                    <h3>Premium</h3>
+                    <div class="plan-price">13.500kzs</div>
+                    <ul class="plan-features">
+                        <li>Acesso a todo conteúdo</li>
+                        <li>Qualidade 4K Ultra HD</li>
+                        <li>4 dispositivos simultâneos</li>
+                        <li>Suporte 24/7</li>
+                    </ul>
+                    <a href="https://wa.me/244975575819" class="btn">Assinar Agora</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact" id="contact">
+            <h2>Contacto/Suporte</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>✉️</i>
+                    <div>
+                        <strong>Email:</strong><br>
+                        panzokiondaplay@gmail.com
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i>📱</i>
+                    <div>
+                        <strong>Whatsapp:</strong><br>
+                        +244 954158404 / +244 975575819
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i>🕒</i>
+                    <div>
+                        <strong>Horário:</strong><br>
+                        Seg-sáb, 8h-22h
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2024 Panzo KiondaPlay. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
